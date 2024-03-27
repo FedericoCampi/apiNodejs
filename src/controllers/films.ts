@@ -7,14 +7,14 @@ const getFilms = async (req:Request, res: Response) => {
 
     try {
        
-        const realease = req.query.release_date;
+        const release = req.query.release;
         
-        if (!realease) {
+        if (!release) {
             const datos = await FilmModel.find({});
             res.send(datos);
             
         }else{
-            const datos = await FilmModel.find({ release_date: { $gt: realease } });
+            const datos = await FilmModel.find({ release_date: { $gt: release } });
             res.send(datos);
         }
         //forzar error
