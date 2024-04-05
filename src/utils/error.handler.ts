@@ -1,7 +1,7 @@
 import { Response } from 'express';
 
-const handleHttp = (res: Response, error: string, errorRaw?: any) => {
-    console.error(errorRaw);
+const handleHttp = ( res: Response, error: string ) => {
+
     res.status(500).send({ error });
 };
 

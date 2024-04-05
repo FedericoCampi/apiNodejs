@@ -2,7 +2,11 @@ import { Request, Response } from 'express';
 import { getPeoples } from '../src/controllers/people';
 import PeopleModel from '../src/models/people';
 
-const mockRequest = (query: any = {}) => ({
+type PeopleQuery = {
+    gender?: string;
+};
+
+const mockRequest = (query: PeopleQuery = {}) => ({
     query,
 });
 

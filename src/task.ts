@@ -4,8 +4,8 @@ import { insertFilms } from './services/films';
 import { insertStarShips } from './services/starships';
 import { insertPlanets } from './services/planets';
 
-export  function runCronTask() {
-    cron.schedule('16 18 * * *', async () => {
+export function runCronTask() {
+    cron.schedule('10 22 * * *', async () => {
         
         try {
             const insertPeopleOnDB = await insertPeople('https://swapi.dev/api/people');

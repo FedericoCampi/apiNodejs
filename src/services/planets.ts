@@ -1,5 +1,6 @@
 import axios from "axios";
 import PlanetModel from "../models/planet";
+import { Planet } from "../interfaces/planet.interface";
 
 const insertPlanets = async (url: string) => {
     
@@ -8,7 +9,7 @@ const insertPlanets = async (url: string) => {
     const results = response.data.results;
     
         try {
-            results.forEach(async (result:any) => {
+            results.forEach(async (result: Planet) => {
                 const existingPerson = await PlanetModel.findOne({ name: result.name });
         
                 if (existingPerson) {

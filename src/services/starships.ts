@@ -1,5 +1,6 @@
 import axios from "axios";
 import StarshipModel from "../models/starship";
+import { Starship } from "../interfaces/starship.interface";
 
 const insertStarShips = async (url: string) => {
     
@@ -8,7 +9,7 @@ const insertStarShips = async (url: string) => {
     const results = response.data.results;
 
         try {
-            results.forEach(async (result:any) => {
+            results.forEach(async (result: Starship) => {
                 const existingPerson = await StarshipModel.findOne({ name: result.name });
         
                 if (existingPerson) {

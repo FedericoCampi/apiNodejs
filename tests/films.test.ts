@@ -2,7 +2,11 @@ import { Request, Response } from 'express';
 import { getFilms } from '../src/controllers/films';
 import FilmModel from '../src/models/film';
 
-const mockRequest = (query: any = {}) => ({
+type FilmQuery = {
+    release_date?: string;
+};
+
+const mockRequest = (query: FilmQuery  = {}) => ({
     query,
 });
 

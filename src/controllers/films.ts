@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
-import { handleHttp } from "../utils/error.handle";
+import { handleHttp } from "../utils/error.handler";
 import FilmModel from "../models/film";
-
 
 const getFilms = async (req:Request, res: Response) => {
 

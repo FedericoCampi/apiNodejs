@@ -1,5 +1,6 @@
 import PeopleModel from "../models/people";
 import axios from "axios";
+import { People } from '../interfaces/people.interface'
 
 const insertPeople = async (url: string) => {
     
@@ -8,7 +9,8 @@ const insertPeople = async (url: string) => {
     const results = response.data.results;
 
         try {
-            results.forEach(async (result:any) => {
+            results.forEach(async (result:People) => {
+                
                 const existingPerson = await PeopleModel.findOne({ name: result.name });
         
                 if (existingPerson) {

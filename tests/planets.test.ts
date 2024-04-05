@@ -2,7 +2,11 @@ import { Request, Response } from 'express';
 import { getPlanets } from '../src/controllers/planets';
 import PlanetModel from '../src/models/planet';
 
-const mockRequest = (query: any = {}) => ({
+type PlanetQuery = {
+    climate?: string;
+};
+
+const mockRequest = (query: PlanetQuery = {}) => ({
     query,
 });
 

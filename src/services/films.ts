@@ -1,5 +1,6 @@
 import axios from "axios";
 import FilmModel from "../models/film";
+import { Film } from '../interfaces/film.interface'
 
 const insertFilms = async (url: string) => {
     
@@ -8,7 +9,9 @@ const insertFilms = async (url: string) => {
     const results = response.data.results;
 
         try {
-            results.forEach(async (result:any) => {
+
+            results.forEach(async (result: Film) => {
+
                 const existingPerson = await FilmModel.findOne({ title: result.title });
         
                 if (existingPerson) {

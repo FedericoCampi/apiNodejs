@@ -2,7 +2,11 @@ import { Request, Response } from 'express';
 import { getStarships } from '../src/controllers/starships';
 import StarshipModel from '../src/models/starship';
 
-const mockRequest = (query: any = {}) => ({
+type StarshipsQuery = {
+    passengers?: string;
+};
+
+const mockRequest = (query: StarshipsQuery = {}) => ({
     query,
 });
 
