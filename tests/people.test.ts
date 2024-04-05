@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getPeoples } from '../src/controllers/people';
+import { getPeople } from '../src/controllers/people';
 import PeopleModel from '../src/models/people';
 
 type PeopleQuery = {
@@ -24,7 +24,7 @@ describe('Test people', () => {
 
         PeopleModel.find = jest.fn().mockResolvedValue([{ name: 'John', gender: 'male' }, { name: 'Alice', gender: 'female' }]);
         
-        await getPeoples(req as Request, res as Response);
+        await getPeople(req as Request, res as Response);
 
         expect(res.send).toHaveBeenCalledWith([{ name: 'John', gender: 'male' }, { name: 'Alice', gender: 'female' }]);
     });
@@ -35,7 +35,7 @@ describe('Test people', () => {
 
         PeopleModel.find = jest.fn().mockResolvedValue([{ name: 'John', gender: 'male' }]);
         
-        await getPeoples(req as Request, res as Response);
+        await getPeople(req as Request, res as Response);
 
         expect(res.send).toHaveBeenCalledWith([{ name: 'John', gender: 'male' }]);
     });
@@ -44,7 +44,7 @@ describe('Test people', () => {
         const req = mockRequest();
         const res = mockResponse();
     
-        await getPeoples(req as Request, res as Response);
+        await getPeople(req as Request, res as Response);
     
         expect(res.status).toHaveBeenCalledWith(500);
         expect(res.send).toHaveBeenCalledWith({ error: 'Error get peoples' });
