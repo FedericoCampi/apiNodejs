@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { getPlanets } from "../controllers/planets";
+import { getPlanetByName, getPlanets } from "../controllers/planets";
 
 const router = Router();
 
 router.get('/', getPlanets);
+router.get('/:name', getPlanetByName);
 
 export { router };

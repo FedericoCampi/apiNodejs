@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { getPeoples } from "../controllers/people";
+import { getPeople, getPeopleByName } from "../controllers/people";
 
 const router = Router();
 
-router.get('/', getPeoples);
+router.get('/', getPeople);
+router.get('/:name', getPeopleByName);
 
 export { router };

@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { getFilms } from "../controllers/films";
+import { getFilmByName, getFilms } from "../controllers/films";
 
 const router = Router();
 
 router.get('/', getFilms);
+router.get('/:name', getFilmByName);
 
 export { router };

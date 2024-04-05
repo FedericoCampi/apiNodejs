@@ -1,7 +1,7 @@
 import cron from 'node-cron';
 import { insertPeople } from './services/people';
 import { insertFilms } from './services/films';
-import { insertStarShips } from './services/starships';
+import { insertStarship } from './services/starships';
 import { insertPlanets } from './services/planets';
 
 export function runCronTask() {
@@ -14,7 +14,7 @@ export function runCronTask() {
             const insertFilmsOnDB = await insertFilms('https://swapi.dev/api/films');
             console.log(insertFilmsOnDB?.message); 
 
-            const insertStarshipsOnDB = await insertStarShips('https://swapi.dev/api/starships');
+            const insertStarshipsOnDB = await insertStarship('https://swapi.dev/api/starships');
             console.log(insertStarshipsOnDB?.message);
 
             const insertPlanetsOnDB = await insertPlanets('https://swapi.dev/api/planets');

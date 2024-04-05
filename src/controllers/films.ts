@@ -1,26 +1,30 @@
 import { Request, Response } from "express";
 import { handleHttp } from "../utils/error.handler";
-import FilmModel from "../models/film";
+import FilmRepository from "../repositories/FilmRepository";
 
-const getFilms = async (req:Request, res: Response) => {
-
+const getFilms = async (req: Request, res: Response) => {
     try {
-       
-        const release = req.query.release;
-        
-        if (!release) {
-            const datos = await FilmModel.find({});
-            res.send(datos);
-            
-        }else{
-            const datos = await FilmModel.find({ release_date: { $gt: release } });
-            res.send(datos);
-        }
-        //forzar error
-        //throw new Error('Forzando un error');
+        const release = req.query.release as string;
+        const datos = await FilmRepository.getFilms(release);
+        res.send(datos);
     } catch (error) {
         handleHttp(res, 'Error get films');
     }
 }
 
-export { getFilms };
+const getFilmByName = async (req: Request, res: Response) => {
+    try {
+        const name = req.params.name;
+        const film = await FilmRepository.findFilmByName(name);
+        
+        if (!film) {
+            return res.status(404).send('Película no encontrada');
+        }
+
+        res.send(film);
+    } catch (error) {
+        handleHttp(res, 'Error en obtener película por nombre');
+    }
+};
+
+export { getFilms, getFilmByName };

@@ -1,31 +1,20 @@
 import axios from "axios";
-import FilmModel from "../models/film";
-import { Film } from '../interfaces/film.interface'
+import FilmRepository from "../repositories/FilmRepository";
 
 const insertFilms = async (url: string) => {
-    
-    const response = await axios.get(url);
+    try {
+        const response = await axios.get(url);
+        const results = response.data.results;
 
-    const results = response.data.results;
-
-        try {
-
-            results.forEach(async (result: Film) => {
-
-                const existingPerson = await FilmModel.findOne({ title: result.title });
-        
-                if (existingPerson) {
-                    await FilmModel.findOneAndUpdate({ title: result.title }, result);
-                } else {
-                    await FilmModel.create(result);
-                }
-                
-            });
-            return { message: "¡Todas las películas fueron insertadas o actualizadas exitosamente!" };
-        } catch (error) {
-            console.error('Error al crear o actualizar datos:', error);
-            return { error: 'Error al crear o actualizar datos de films'};
+        for (const result of results) {
+            await FilmRepository.insertOrUpdateFilm(result);
         }
+
+        return { message: "¡Todas las películas fueron insertadas o actualizadas exitosamente!" };
+    } catch (error) {
+        console.error('Error al crear o actualizar datos:', error);
+        return { error: 'Error al crear o actualizar datos de films'};
+    }
 }
 
 export { insertFilms };

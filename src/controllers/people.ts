@@ -1,25 +1,30 @@
-import { Request, Response } from "express"
-import { handleHttp } from "../utils/error.handler"
-import PeopleModel from "../models/people";
+import { Request, Response } from "express";
+import { handleHttp } from "../utils/error.handler";
+import PeopleRepository from "../repositories/PeopleRepository";
 
-const getPeoples = async (req:Request, res: Response) => {
-
+const getPeople = async (req: Request, res: Response) => {
     try {
-        const gender = req.query.gender;
-
-        if (!gender) {
-            const datos = await PeopleModel.find({});
-            res.send(datos);
-            
-        }else{
-            const datos = await PeopleModel.find({ gender: gender });
-            res.send(datos);
-        }
-        //forzar error para test
-        //throw new Error('Forzando un error');
+        const gender = req.query.gender as string;
+        const datos = await PeopleRepository.getPeople(gender);
+        res.send(datos);
     } catch (error) {
-        handleHttp(res, 'Error get peoples');
+        handleHttp(res, 'Error get people');
     }
 }
 
-export { getPeoples };
+const getPeopleByName = async (req: Request, res: Response) => {
+    try {
+        const name = req.params.name;
+        const people = await PeopleRepository.findPeopleByName(name);
+        
+        if (!people) {
+            return res.status(404).send('Personaje no encontrado');
+        }
+
+        res.send(people);
+    } catch (error) {
+        handleHttp(res, 'Error en obtener personaje por nombre');
+    }
+};
+
+export { getPeople, getPeopleByName };

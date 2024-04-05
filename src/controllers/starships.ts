@@ -1,29 +1,30 @@
 import { Request, Response } from "express";
 import { handleHttp } from "../utils/error.handler";
-import StarshipModel from "../models/starship";
+import StarshipRepository from "../repositories/StarShipRepository";
 
-
-const getStarships = async (req:Request, res: Response) => {
-
+const getStarships = async (req: Request, res: Response) => {
     try {
-
-        const passengers = req.query.passengers;
-        
-        if (!passengers) {
-            const datos = await StarshipModel.find({});
-            res.send(datos);
-            
-        }else{
-            const datos = await StarshipModel.find({passengers: passengers});
-            res.send(datos);
-        }
-
-        //forzar error para test
-        //throw new Error('Forzando un error');
+        const passengers = req.query.passengers as string;
+        const datos = await StarshipRepository.getStarships(passengers);
+        res.send(datos);
     } catch (error) {
         handleHttp(res, 'Error get starships');
-        res.send('Error get starships');
     }
-}
+};
 
-export { getStarships };
+const getStarshipByName = async (req: Request, res: Response) => {
+    try {
+        const name = req.params.name;
+        const starship = await StarshipRepository.findStarshipByName(name);
+        
+        if (!starship) {
+            return res.status(404).send('Nave no encontrada');
+        }
+
+        res.send(starship);
+    } catch (error) {
+        handleHttp(res, 'Error en obtener nave por nombre');
+    }
+};
+
+export { getStarships, getStarshipByName };
