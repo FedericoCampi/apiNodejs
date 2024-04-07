@@ -7,7 +7,7 @@ class StarshipRepository {
         if (!passengers) {
             return await StarshipModel.find({});
         } else {
-            return await StarshipModel.find({ passengers: { passengers } });
+            return await StarshipModel.find({ passengers });
         }
     }
 

@@ -7,7 +7,7 @@ class PlanetRepository {
         if (!climate) {
             return await PlanetModel.find({});
         } else {
-            return await PlanetModel.find({ climate: { climate } });
+            return await PlanetModel.find({ climate });
         }
     }
 

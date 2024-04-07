@@ -7,7 +7,7 @@ class PeopleRepository {
         if (!gender) {
             return await PeopleModel.find({});
         } else {
-            return await PeopleModel.find({ gender: { gender } });
+            return await PeopleModel.find({ gender });
         }
     }
 

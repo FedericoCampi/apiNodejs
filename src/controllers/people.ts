@@ -4,9 +4,12 @@ import PeopleRepository from "../repositories/PeopleRepository";
 
 const getPeople = async (req: Request, res: Response) => {
     try {
+        
         const gender = req.query.gender as string;
         const datos = await PeopleRepository.getPeople(gender);
+        
         res.send(datos);
+        
     } catch (error) {
         handleHttp(res, 'Error get people');
     }
