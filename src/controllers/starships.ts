@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { handleHttp } from "../utils/error.handler";
-import StarshipRepository from "../repositories/StarShipRepository";
+import { handleHttp } from "../utils/error.handler.js";
+import StarshipRepository from "../repositories/StarshipRepository.js";
 
 const getStarships = async (req: Request, res: Response) => {
     try {

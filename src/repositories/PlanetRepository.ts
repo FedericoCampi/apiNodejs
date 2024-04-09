@@ -1,5 +1,5 @@
-import PlanetModel from "../models/planet";
-import { Planet } from "../interfaces/planet.interface";
+import PlanetModel from "../models/planet.js";
+import { Planet } from "../interfaces/planet.interface.js";
 
 class PlanetRepository {
 

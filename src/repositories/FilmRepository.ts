@@ -1,5 +1,5 @@
-import FilmModel from "../models/film";
-import { Film } from "../interfaces/film.interface";
+import FilmModel from "../models/film.js";
+import { Film } from "../interfaces/film.interface.js";
 
 class FilmRepository {
 

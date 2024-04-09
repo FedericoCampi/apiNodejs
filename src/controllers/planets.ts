@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { handleHttp } from "../utils/error.handler";
-import PlanetRepository from "../repositories/PlanetRepository";
+import { handleHttp } from "../utils/error.handler.js";
+import PlanetRepository from "../repositories/PlanetRepository.js";
 
 const getPlanets = async (req: Request, res: Response) => {
     try {

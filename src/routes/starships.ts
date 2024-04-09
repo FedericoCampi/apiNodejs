@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getStarshipByName, getStarships } from "../controllers/starships";
+import { getStarshipByName, getStarships } from "../controllers/starships.js";
 
 const router = Router();
 

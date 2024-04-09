@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { handleHttp } from "../utils/error.handler";
-import FilmRepository from "../repositories/FilmRepository";
+import { handleHttp } from "../utils/error.handler.js";
+import FilmRepository from "../repositories/FilmRepository.js";
 
 const getFilms = async (req: Request, res: Response) => {
     try {

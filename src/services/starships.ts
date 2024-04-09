@@ -1,5 +1,5 @@
 import axios from "axios";
-import StarshipRepository from "../repositories/StarShipRepository";
+import StarshipRepository from "../repositories/StarshipRepository.js";
 
 const insertStarship = async (url: string) => {
     try {

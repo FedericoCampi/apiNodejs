@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { Planet } from "../interfaces/planet.interface";
+import { Planet } from "../interfaces/planet.interface.js";
 
 const PlanetsSchema = new Schema<Planet>(
     {

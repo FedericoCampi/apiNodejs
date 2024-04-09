@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { handleHttp } from "../utils/error.handler";
-import PeopleRepository from "../repositories/PeopleRepository";
+import { handleHttp } from "../utils/error.handler.js";
+import PeopleRepository from "../repositories/PeopleRepository.js";
 
 const getPeople = async (req: Request, res: Response) => {
     try {

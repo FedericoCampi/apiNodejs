@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { Film } from "../interfaces/film.interface";
+import { Film } from "../interfaces/film.interface.js";
 
 const filmSchema = new Schema<Film>(
     {

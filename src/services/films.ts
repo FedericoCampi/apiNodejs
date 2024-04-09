@@ -1,5 +1,5 @@
 import axios from "axios";
-import FilmRepository from "../repositories/FilmRepository";
+import FilmRepository from "../repositories/FilmRepository.js";
 
 const insertFilms = async (url: string) => {
     try {

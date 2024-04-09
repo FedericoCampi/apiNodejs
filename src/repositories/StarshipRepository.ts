@@ -1,5 +1,5 @@
-import StarshipModel from "../models/starship";
-import { Starship } from "../interfaces/starship.interface";
+import StarshipModel from "../models/starship.js";
+import { Starship } from "../interfaces/starship.interface.js";
 
 class StarshipRepository {
 

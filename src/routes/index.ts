@@ -1,26 +1,21 @@
 import { Router } from "express";
-import { readdirSync } from 'fs';
-
-interface ModuleRouter {
-    router: Router;
-}
-
-const PATH_ROUTER = `${__dirname}`;
+import { getStarshipByName, getStarships } from "../controllers/starships.js";
+import { getPlanetByName, getPlanets } from "../controllers/planets.js";
+import { getFilmByName, getFilms } from "../controllers/films.js";
+import { getPeople, getPeopleByName } from "../controllers/people.js";
 
 const router = Router();
 
-const cleanFileName = (fileName: string) => {
-    const file = fileName.split('.').shift()
-    return file;
-}
+router.get('/starships', getStarships);
+router.get('/starships/:name', getStarshipByName);
 
-readdirSync(PATH_ROUTER).filter((fileName) => {
-    const cleanName = cleanFileName(fileName);
-    if(cleanName !== 'index'){
-        import(`./${cleanName}`).then((moduleRouter: ModuleRouter) => {
-            router.use(`/${cleanName}`, moduleRouter.router)
-        })
-    }
-})
+router.get('/planets', getPlanets);
+router.get('/planets/:name', getPlanetByName);
+
+router.get('/films', getFilms);
+router.get('/films/:name', getFilmByName);
+
+router.get('/', getPeople);
+router.get('/:name', getPeopleByName);
 
 export { router };

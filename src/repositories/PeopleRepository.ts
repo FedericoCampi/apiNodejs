@@ -1,5 +1,5 @@
-import PeopleModel from "../models/people";
-import { People } from "../interfaces/people.interface";
+import PeopleModel from "../models/people.js";
+import { People } from "../interfaces/people.interface.js";
 
 class PeopleRepository {
 

@@ -1,8 +1,8 @@
 import cron from 'node-cron';
-import { insertPeople } from './services/people';
-import { insertFilms } from './services/films';
-import { insertStarship } from './services/starships';
-import { insertPlanets } from './services/planets';
+import { insertPeople } from './services/people.js';
+import { insertFilms } from './services/films.js';
+import { insertStarship } from './services/starships.js';
+import { insertPlanets } from './services/planets.js';
 
 export function runCronTask() {
     cron.schedule('10 22 * * *', async () => {

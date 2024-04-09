@@ -1,5 +1,5 @@
 import axios from "axios";
-import PlanetRepository from "../repositories/PlanetRepository";
+import PlanetRepository from "../repositories/PlanetRepository.js";
 
 const insertPlanets = async (url: string) => {
     try {

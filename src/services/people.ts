@@ -1,5 +1,5 @@
 import axios from "axios";
-import PeopleRepository from "../repositories/PeopleRepository";
+import PeopleRepository from "../repositories/PeopleRepository.js";
 
 const insertPeople = async (url: string) => {
     try {

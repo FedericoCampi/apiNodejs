@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { Starship } from "../interfaces/starship.interface";
+import { Starship } from "../interfaces/starship.interface.js";
 
 const StarshipSchema = new Schema<Starship>(
     {
